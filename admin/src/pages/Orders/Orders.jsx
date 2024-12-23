@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 
 const Orders = ({ url }) => {
   const navigate = useNavigate();
-  const { token, admin } = useContext(StoreContext);
   const [orders, setOrders] = useState([]);
 
   const fetchAllOrder = async () => {
@@ -39,13 +38,6 @@ const Orders = ({ url }) => {
       toast.error(response.data.message);
     }
   };
-  useEffect(() => {
-    if (!admin && !token) {
-      toast.error("Please Login First");
-      navigate("/");
-    }
-    fetchAllOrder();
-  }, []);
 
   return (
     <div className="order add">
