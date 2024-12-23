@@ -108,11 +108,11 @@ const listOrders = async (req, res) => {
 // Admin Order Status Update API
 const updateStatus = async (req, res) => {
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId, {status: req.body.status})
-        res.json({success: true, message: "Order status updated successfully"})
+        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status })
+        res.json({ success: true, message: "Order status updated successfully" })
     } catch (error) {
         console.log(error);
-        res.json({success: false, message: "Failed to update order status"})
+        res.json({ success: false, message: "Failed to update order status" })
     }
 }
 
