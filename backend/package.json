@@ -1,10 +1,13 @@
 {
   "name": "backend",
+  "engines": {
+    "node": "18.x"
+  },
   "version": "1.0.0",
   "main": "server.js",
-  "type" : "module",
+  "type": "module",
   "scripts": {
-    "server" : "nodemon server.js"
+    "server": "nodemon server.js"
   },
   "author": "mohammad-hafeez",
   "license": "ISC",
