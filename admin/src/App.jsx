@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
-  const url = process.env.PORT || 4000
+  const url = "https://foodify-backend-7hnv.onrender.com/"
 
   return (
     <div>
