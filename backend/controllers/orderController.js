@@ -95,26 +95,37 @@ const userOrders = async (req, res) => {
 // Listing orders for Admin Panel
 const listOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
-        res.json({ success: true, data: orders })
-
+        let userData = await userModel.findById(req.body.userId);
+        if (userData && userData.role === "admin") {
+            const orders = await orderModel.find({});
+            res.json({ success: true, data: orders });
+        } else {
+            res.json({ success: false, message: "You are not admin" });
+        }
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Failed to fetch orders" });
+        res.json({ success: false, message: "Error" });
     }
-}
+};
 
 
 // Admin Order Status Update API
 const updateStatus = async (req, res) => {
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status })
-        res.json({ success: true, message: "Order status updated successfully" })
+        let userData = await userModel.findById(req.body.userId);
+        if (userData && userData.role === "admin") {
+            await orderModel.findByIdAndUpdate(req.body.orderId, {
+                status: req.body.status,
+            });
+            res.json({ success: true, message: "Status Updated Successfully" });
+        } else {
+            res.json({ success: false, message: "You are not an admin" });
+        }
     } catch (error) {
         console.log(error);
-        res.json({ success: false, message: "Failed to update order status" })
+        res.json({ success: false, message: "Error" });
     }
-}
+};
 
 
 
