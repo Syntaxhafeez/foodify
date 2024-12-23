@@ -8,7 +8,6 @@ import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const Add = ({ url }) => {
-    const { token } = useContext(StoreContext);
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
         name: "",
@@ -32,7 +31,7 @@ const Add = ({ url }) => {
         formData.append("category", data.category);
         formData.append("image", image);
 
-        const response = await axios.post(`${url}/api/food/add`, formData, { headers: { token } });
+        const response = await axios.post(`${url}/api/food/add`, formData);
         if (response.data.success) {
             setData({
                 name: "",

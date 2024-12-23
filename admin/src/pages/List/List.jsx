@@ -7,7 +7,6 @@ import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const List = ({ url }) => {
-  const { token } = useContext(StoreContext);
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
@@ -22,9 +21,7 @@ const List = ({ url }) => {
   const removeFood = async (foodId) => {
     const response = await axios.post(
       `${url}/api/food/remove`,
-      { id: foodId },
-      { headers: { token } }
-    );
+      { id: foodId });
     await fetchList();
     if (response.data.success) {
       toast.success(response.data.message);
