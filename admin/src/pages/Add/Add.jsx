@@ -5,12 +5,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Add = ({ url }) => {
-    const navigate = useNavigate();
-    const { token, admin } = useContext(StoreContext);
+    const { token } = useContext(StoreContext);
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
         name: "",
@@ -48,12 +46,7 @@ const Add = ({ url }) => {
             toast.error(response.data.message);
         }
     };
-    useEffect(() => {
-        if (!admin && !token) {
-            toast.error("Please Login First");
-            navigate("/");
-        }
-    }, [])
+    
     return (
         <div className="add">
             <form onSubmit={onSubmitHandler} className="flex-col">
