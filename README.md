@@ -25,8 +25,7 @@ Foodify is a comprehensive food delivery web application that provides a seamles
 [Foodify Frontend](https://foodify-frontend-iasi.onrender.com)
 
 ## 📸 Screenshots
-
-
+![Screenshot 2024-12-24 115659](https://github.com/user-attachments/assets/8ea4467d-cae0-4d90-a600-1957fe54519f)
 
 ## 📞 Contact
 
